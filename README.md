@@ -8,6 +8,7 @@ Design/Layout
 - Código organizado, com separação clara entre componentes, serviços e tipos
 Para Entrega
 - Repositório público no GitHub
+
 Objetivo da avaliação:
 - Domínio de React com TypeScript
 - Uso do React-Bootstrap
@@ -15,3 +16,38 @@ Objetivo da avaliação:
 - Capacidade de simular uma estrutura de CRUD com lógica de estado local e global
 - Uso correto de useState, useEffect etc.
 - Boa prática de arquitetura e separação de responsabilidades
+
+----
+TODO:
+
+puxar dados com axios.
+
+tabela de listagem dos itens
+página de criação
+pagina de edição (pode ser a mesma da criação)
+modal de confirmação e exclusão.
+toast de sucesso e erro.
+estados globais - redux, zustand ou recoil
+
+----
+- Read 
+- Create
+- Update
+- Delete
+
+- Service
+  - tratamento de erros
+  - chamadas para requisições.
+
+- Utils
+  - chamada com axios
+
+- Routes
+  - list
+  - createOrUpdate
+
+- Components
+  - modal
+  - toast
+  - card
+  - button
