@@ -32,7 +32,16 @@
         "src/pages/*/index",
         "src/pages/*/index.tsx"
       ],
-      "@pages": ["src/pages"]
+      "@store/*": [
+        "src/store/*",
+        "src/store/*/index",
+        "src/store/*/index.tsx"
+      ],
+      "@types/*": [
+        "src/models/*",
+        "src/models/*/index",
+        "src/models/*/index.tsx"
+      ]     
     }
   }
 }
