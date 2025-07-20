@@ -1,5 +1,6 @@
 import ConfirmModal from '@components/confirmModal';
 import { useItemStore } from '@store/itemStore';
+import { useThemeStore } from '@store/themeStore';
 import { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 
@@ -10,6 +11,7 @@ interface ItemTableProps {
 const ItemTable = ({ onEdit }: ItemTableProps) => {
   const items = useItemStore((state) => state.items);
   const deleteItem = useItemStore((state) => state.deleteItem);
+  const { isDarkMode, } = useThemeStore()
 
   const [itemToDelete, setItemToDelete] = useState<number | null>(null);
 
@@ -27,7 +29,12 @@ const ItemTable = ({ onEdit }: ItemTableProps) => {
   return (
     <>
       <h4 className='mb-3'>Itens cadastrados</h4>
-      <Table striped bordered hover responsive>
+      <Table
+        hover
+        striped
+        bordered
+        responsive
+        variant={isDarkMode ? 'dark' : 'light'}>
         <thead>
           <tr>
             <th>Nome</th>

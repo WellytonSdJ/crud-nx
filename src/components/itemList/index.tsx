@@ -1,16 +1,23 @@
 import React from 'react'
 import { useItemStore } from '@store/itemStore'
 import { Table } from 'react-bootstrap'
+import { useThemeStore } from '@store/themeStore'
 
 const ItemList: React.FC = () => {
   const items = useItemStore((state) => state.items)
+  const { isDarkMode, } = useThemeStore()
 
-  if (items.length === 0){
+  if (items.length === 0) {
     return <p>Nenhum item cadastrado ainda.</p>
   }
 
   return (
-    <Table striped bordered hover responsive variant="dark">
+    <Table
+      hover
+      striped
+      bordered
+      responsive
+      variant={isDarkMode ? 'dark' : 'light'}>
       <thead>
         <tr>
           <th>ID</th>

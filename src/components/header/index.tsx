@@ -5,7 +5,14 @@ import { useThemeStore } from '@store/themeStore'
 const Header = () => {
   const { isDarkMode, toggleTheme } = useThemeStore()
   return (
-    <Navbar bg={isDarkMode ? 'dark' : 'light'} variant={isDarkMode ? 'dark' : 'light'}>
+    <Navbar
+      style={{
+        backgroundColor: isDarkMode ? '#007bff' : '#007bff', // azul forte claro/escuro
+        color: '#fff'
+      }}
+      variant="dark"
+      className="shadow-sm"
+    >
       <Container className="d-flex justify-content-between">
         <Navbar.Brand as={NavLink} to="/">
           Meu App
