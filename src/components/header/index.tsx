@@ -1,10 +1,12 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useThemeStore } from '@store/themeStore'
 
 const Header = () => {
+  const { isDarkMode, toggleTheme } = useThemeStore()
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
-      <Container>
+    <Navbar bg={isDarkMode ? 'dark' : 'light'} variant={isDarkMode ? 'dark' : 'light'}>
+      <Container className="d-flex justify-content-between">
         <Navbar.Brand as={NavLink} to="/">
           Meu App
         </Navbar.Brand>
@@ -18,6 +20,9 @@ const Header = () => {
               Dashboard
             </Nav.Link>
           </Nav>
+          <Button variant={isDarkMode ? 'light' : 'dark'} onClick={toggleTheme}>
+            {isDarkMode ? 'Modo Claro ☀️' : 'Modo Escuro 🌙'}
+          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

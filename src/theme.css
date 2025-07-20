@@ -1,0 +1,11 @@
+body.bg-dark input,
+body.bg-dark textarea,
+body.bg-dark select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+body.bg-dark .form-label {
+  color: #ccc;
+}
