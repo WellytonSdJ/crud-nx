@@ -58,35 +58,68 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
         preco
       })
     }
-
+    onEditComplete?.();
     limparForm()
   }
   return (
     <Form onSubmit={handleSubmit}>
-      <h4>{itemToEdit ? 'Editar Item' : 'Adicionar novo item'}</h4>
+      <h4 className='mb-3'>{itemToEdit ? 'Editar Item' : 'Adicionar novo item'}</h4>
       <Form.Group className='mb-3'>
         <Form.Label>Nome</Form.Label>
-        <Form.Control value={nome} onChange={(e) => setNome(e.target.value)} required />
+        <Form.Control
+          placeholder="Digite o nome do item"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          required />
       </Form.Group>
 
       <Form.Group className='mb-3'>
         <Form.Label>Descricao</Form.Label>
-        <Form.Control value={descricao} onChange={(e) => setDescricao(e.target.value)} required />
+        <Form.Control
+          placeholder="Digite a descrição do item"
+          value={descricao}
+          onChange={(e) => setDescricao(e.target.value)}
+          required />
       </Form.Group>
 
       <Form.Group className='mb-3'>
         <Form.Label>Quantidade</Form.Label>
-        <Form.Control type="number" value={quantidade} onChange={(e) => setQuantidade(Number(e.target.value))} required />
+        <Form.Control
+          placeholder="Digite o nome do item"
+          type="number"
+          value={quantidade}
+          onChange={(e) => setQuantidade(Number(e.target.value))}
+          required />
       </Form.Group>
 
       <Form.Group className='mb-3'>
         <Form.Label>Preco</Form.Label>
-        <Form.Control type="number" value={preco} onChange={(e) => setPreco(Number(e.target.value))} required />
+        <Form.Control
+          placeholder="Digite o nome do item"
+          type="number"
+          value={preco}
+          onChange={(e) => setPreco(Number(e.target.value))}
+          required />
       </Form.Group>
 
-      <Button type="submit">{itemToEdit ? 'Salvar alterações' : 'Salvar'}</Button>
+      <Button
+        type="submit"
+        variant='primary'
+        disabled={!nome.trim() || quantidade < 0 || preco < 0}
+      >
+        {itemToEdit ? 'Salvar alterações' : 'Salvar'}
+
+      </Button>
       {itemToEdit && (
-        <Button variant="secondary" className='ms-2' onClick={limparForm} type='button'>
+        <Button
+          variant="secondary"
+          className='ms-2'
+          onClick={() => {
+            limparForm()
+            onEditComplete?.();
+          }}
+          type='button'
+        >
           Cancelar
         </Button>
       )}

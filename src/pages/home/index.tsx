@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap'
 const Home: React.FC = () => {
   return (
     <Container className='my-4'>
-      <h1 className='mb-4'>Lista de Itens</h1>
+      <h1 className='mb-4 fw-bold text-primary'>Lista de Itens</h1>
       <ItemList />
     </Container>
 

@@ -3,31 +3,62 @@ import ItemForm from '@components/itemForm'
 import ItemTable from '@components/itemTable'
 import type { Item } from '@models/item'
 import { useItemStore } from '@store/itemStore'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 
 const Dashboard = () => {
   const items = useItemStore((state) => state.items)
   const [itemToEdit, setItemToEdit] = useState<Item | null>(null)
+  const [showForm, setShowForm] = useState(false);
 
   const handleEdit = (itemId: number) => {
     const item = items.find((i) => i.id === itemId) || null;
     setItemToEdit(item);
+    setShowForm(true);
   }
 
+  const handleNewItem = () => {
+    setItemToEdit(null);
+    setShowForm(true);
+  };
+
   const onEditComplete = () => {
-    setItemToEdit(null)
+    setItemToEdit(null);
+    setShowForm(false);
   }
 
   return (
-    <Container className="my-4">
-      <h1 className="mb-4">Dashboard</h1>
+    <Container className="my-4 p-4 bg-white rounded shadow-sm">
+      <h1 className="mb-4 fw-bold text-primary">Dashboard</h1>
+      <Row className="align-items-center" style={{ paddingBottom: '0.5rem' }}>
+        <Col>
+          <p className="text-muted">Gerencie os itens cadastrados abaixo</p>
+        </Col>
+        <Col className="text-end">
+          <Button variant="outline-primary" onClick={handleNewItem}>
+            Novo Item
+          </Button>
+        </Col>
+      </Row>
+
+      <Col className="text-end">
+      </Col>
       <Row>
-        <Col md={5}>
-          <ItemForm itemToEdit={itemToEdit}  onEditComplete={onEditComplete}/>
-        </Col>
-        <Col md={7}>
-          <ItemTable onEdit={handleEdit}/>
-        </Col>
+        {showForm && (
+          <Card>
+            <Card.Body>
+              <ItemForm itemToEdit={itemToEdit} onEditComplete={onEditComplete} />
+            </Card.Body>
+          </Card>
+        )}
+
+        {!showForm && <Col md={12}>
+          <Card>
+            <Card.Body>
+              <h5 className="mb-3">Itens Cadastrados</h5>
+              <ItemTable onEdit={handleEdit} />
+            </Card.Body>
+          </Card>
+        </Col>}
       </Row>
     </Container>
   )

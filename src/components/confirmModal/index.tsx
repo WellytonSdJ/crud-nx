@@ -9,7 +9,7 @@ interface ConfirmModalProps {
 
 const ConfirmModal = ({ show, message, onClose, onConfirm }: ConfirmModalProps) => {
   return (
-    <Modal show={show} onHide={onClose} centered>
+    <Modal show={show} onHide={onClose} centered animation>
       <Modal.Header closeButton>
         <Modal.Title>Confirmar ação</Modal.Title>
       </Modal.Header>

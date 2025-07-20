@@ -26,8 +26,8 @@ const ItemTable = ({ onEdit }: ItemTableProps) => {
 
   return (
     <>
-      <h4>Itens cadastrados</h4>
-      <Table striped bordered hover>
+      <h4 className='mb-3'>Itens cadastrados</h4>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>Nome</th>
