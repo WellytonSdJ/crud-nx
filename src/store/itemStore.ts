@@ -1,5 +1,7 @@
-import type { Item } from 'src/models/item';
 import { create } from 'zustand';
+import type { Item } from 'src/models/item';
+import { itemService } from '@services/itemService'
+
 
 type ItemStore = {
   items: Item[];
@@ -12,21 +14,26 @@ type ItemStore = {
 export const useItemStore = create<ItemStore>((set, get) => ({
   items: [],
 
-  addItem: (item) => {
-    set((state) => ({
-      items: [...state.items, item],
-    }));
+  fetchItems: async () => {
+    const data = await itemService.getAll()
+    set({ items: data })
   },
 
-  updateItem: (updatedItem) => {
+  addItem: async (item) => {
+    const newItem = await itemService.create(item)
+    set((state) => ({ items: [...state.items, newItem], }));
+  },
+
+  updateItem: async (updatedItem) => {
+    const updated = await itemService.update(updatedItem)
     set((state) => ({
-      items: state.items.map((item) =>
-        item.id === updatedItem.id ? updatedItem : item
+      items: state.items.map((item) => item.id === updated.id ? updated : item
       ),
     }));
   },
 
-  deleteItem: (id) => {
+  deleteItem: async (id) => {
+    await itemService.remove(id)
     set((state) => ({
       items: state.items.filter((item) => item.id !== id),
     }));
