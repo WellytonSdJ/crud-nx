@@ -54,7 +54,6 @@ const Dashboard = () => {
         {!showForm && <Col md={12}>
           <Card>
             <Card.Body>
-              <h5 className="mb-3">Itens Cadastrados</h5>
               <ItemTable onEdit={handleEdit} />
             </Card.Body>
           </Card>

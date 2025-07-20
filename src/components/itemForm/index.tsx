@@ -110,7 +110,7 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
         {itemToEdit ? 'Salvar alterações' : 'Salvar'}
 
       </Button>
-      {itemToEdit && (
+      
         <Button
           variant="secondary"
           className='ms-2'
@@ -122,7 +122,6 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
         >
           Cancelar
         </Button>
-      )}
     </Form>
   )
 }
