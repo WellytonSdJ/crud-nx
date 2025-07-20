@@ -1,6 +1,6 @@
 import { useItemStore } from '@store/itemStore'
 import React, { useEffect, useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Spinner } from 'react-bootstrap'
 import type { Item } from '@models/item';
 
 interface ItemFormProps {
@@ -16,6 +16,7 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
   const [descricao, setDescricao] = useState('')
   const [quantidade, setQuantidade] = useState(0)
   const [preco, setPreco] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (itemToEdit) {
@@ -37,29 +38,33 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
 
-    if (itemToEdit) {
-      updateItem({
-        ...itemToEdit,
-        nome,
-        descricao,
-        quantidade,
-        preco
-      });
+    setTimeout(() => {
+      if (itemToEdit) {
+        updateItem({
+          ...itemToEdit,
+          nome,
+          descricao,
+          quantidade,
+          preco
+        });
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      onEditComplete && onEditComplete();
-    } else {
-      addItem({
-        id: Date.now(),
-        nome,
-        descricao,
-        quantidade,
-        preco
-      })
-    }
-    onEditComplete?.();
-    limparForm()
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        onEditComplete && onEditComplete();
+      } else {
+        addItem({
+          id: Date.now(),
+          nome,
+          descricao,
+          quantidade,
+          preco
+        })
+      }
+      onEditComplete?.();
+      limparForm()
+      setLoading(false)
+    }, 1500)
   }
   return (
     <Form onSubmit={handleSubmit}>
@@ -107,10 +112,24 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
         variant='primary'
         disabled={!nome.trim() || quantidade < 0 || preco < 0}
       >
-        {itemToEdit ? 'Salvar alterações' : 'Salvar'}
-
+        {loading ? (
+          <>
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+              className="me-2"
+            />
+            Salvando...
+          </>
+        ) : (
+          itemToEdit ? 'Salvar alterações' : 'Salvar'
+        )}
       </Button>
-      
+
+      {!loading && (
         <Button
           variant="secondary"
           className='ms-2'
@@ -122,6 +141,8 @@ const ItemForm = ({ itemToEdit = null, onEditComplete }: ItemFormProps) => {
         >
           Cancelar
         </Button>
+      )}
+
     </Form>
   )
 }
