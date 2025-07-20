@@ -27,21 +27,18 @@
         "src/assets/*/index",
         "src/assets/*/index.tsx"
       ],
-      "@pages/*": [
-        "src/pages/*",
-        "src/pages/*/index",
-        "src/pages/*/index.tsx"
-      ],
-      "@store/*": [
-        "src/store/*",
-        "src/store/*/index",
-        "src/store/*/index.tsx"
-      ],
+      "@pages/*": ["src/pages/*", "src/pages/*/index", "src/pages/*/index.tsx"],
+      "@store/*": ["src/store/*", "src/store/*/index", "src/store/*/index.tsx"],
       "@types/*": [
         "src/models/*",
         "src/models/*/index",
         "src/models/*/index.tsx"
-      ]     
-    }
+      ]
+    },
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
