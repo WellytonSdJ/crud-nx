@@ -8,7 +8,7 @@ const ItemList: React.FC = () => {
   const { isDarkMode, } = useThemeStore()
 
   if (items.length === 0) {
-    return <p>Nenhum item cadastrado ainda.</p>
+    return <p style={{ color: isDarkMode ? '#000000' : '' }}>Nenhum item cadastrado ainda.</p>
   }
 
   return (
