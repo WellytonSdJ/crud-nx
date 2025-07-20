@@ -27,8 +27,9 @@ Objetivo da avaliação:
 - [x] estados globais - zustand
 - [x] commits padronizados com husky/commitlint
 - [x] separação das tipagens (models)
-- [] toast de sucesso e erro.
-- [] spinner ou loading, mesmo que fake.
-- [] adicionar services.
+- [x] modo escuro.
+- [x] toast de sucesso e erro.
+- [x] spinner ou loading fake.
+- [x] adicionar services.
 - [] tratamentos de erro.
 - [] utils para chamadas com axios
