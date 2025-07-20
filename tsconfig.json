@@ -33,7 +33,18 @@
         "src/models/*",
         "src/models/*/index",
         "src/models/*/index.tsx"
-      ]
+      ],
+      "@contexts/*": [
+        "src/contexts/*",
+        "src/contexts/*/index",
+        "src/contexts/*/index.tsx"
+      ],
+      "@hooks/*": [
+        "src/hooks/*",
+        "src/hooks/*/index",
+        "src/hooks/*/index.tsx"
+      ],
+
     },
     "module": "ESNext",
     "target": "ESNext",

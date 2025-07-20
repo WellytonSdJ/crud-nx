@@ -1,4 +1,5 @@
 import ConfirmModal from '@components/confirmModal';
+import { useToast } from '@hooks/useToast';
 import { useItemStore } from '@store/itemStore';
 import { useThemeStore } from '@store/themeStore';
 import { useState } from 'react';
@@ -9,6 +10,7 @@ interface ItemTableProps {
 }
 
 const ItemTable = ({ onEdit }: ItemTableProps) => {
+  const { addToast } = useToast();
   const items = useItemStore((state) => state.items);
   const deleteItem = useItemStore((state) => state.deleteItem);
   const { isDarkMode, } = useThemeStore()
@@ -23,7 +25,8 @@ const ItemTable = ({ onEdit }: ItemTableProps) => {
     if (itemToDelete !== null) {
       deleteItem(itemToDelete);
       setItemToDelete(null);
-    }
+      addToast('Item excluido com sucesso!', 'success');
+    } 
   };
 
   return (
