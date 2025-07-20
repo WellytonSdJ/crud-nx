@@ -6,6 +6,7 @@ Design/Layout
 - Total liberdade de layout
 - Obrigatório usar componentes do react-bootstrap
 - Código organizado, com separação clara entre componentes, serviços e tipos
+
 Para Entrega
 - Repositório público no GitHub
 
@@ -16,38 +17,18 @@ Objetivo da avaliação:
 - Capacidade de simular uma estrutura de CRUD com lógica de estado local e global
 - Uso correto de useState, useEffect etc.
 - Boa prática de arquitetura e separação de responsabilidades
-
 ----
-TODO:
-
-puxar dados com axios.
-
-tabela de listagem dos itens
-página de criação
-pagina de edição (pode ser a mesma da criação)
-modal de confirmação e exclusão.
-toast de sucesso e erro.
-estados globais - redux, zustand ou recoil
-
-----
-- Read 
-- Create
-- Update
-- Delete
-
-- Service
-  - tratamento de erros
-  - chamadas para requisições.
-
-- Utils
-  - chamada com axios
-
-- Routes
-  - list
-  - createOrUpdate
-
-- Components
-  - modal
-  - toast
-  - card
-  - button
+# TODO:
+- [x] tabela de listagem dos itens (view)
+- [x] tabela de listagem dos itens com controle adm (dashboard)
+- [x] página de criação
+- [x] pagina de edição (pode ser a mesma da criação)
+- [x] modal de confirmação e exclusão
+- [x] estados globais - zustand
+- [x] commits padronizados com husky/commitlint
+- [x] separação das tipagens (models)
+- [] toast de sucesso e erro.
+- [] spinner ou loading, mesmo que fake.
+- [] adicionar services.
+- [] tratamentos de erro.
+- [] utils para chamadas com axios
